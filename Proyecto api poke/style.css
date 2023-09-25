@@ -1,96 +1,388 @@
-                
-                
-                
-                
-                
-                
-                
-                
-   #tarjeta{
-    display: grid;
-    grid-template-columns: repeat(3,1fr);
-   }             
-                
-                
-                /* tarjeta */
-.card {
+:root {
+  --type-normal: #A8A878;
+  --type-fire: #F08030;
+  --type-water: #6890F0;
+  --type-grass: #78C850;
+  --type-electric: #F8D030;
+  --type-ice: #98D8D8;
+  --type-fighting: #C03028;
+  --type-poison: #A040A0;
+  --type-ground: #E0C068;
+  --type-flying: #A890F0;
+  --type-psychic: #F85888;
+  --type-bug: #A8B820;
+  --type-rock: #B8A038;
+  --type-ghost: #705898;
+  --type-dark: #705848;
+  --type-dragon: #7038F8;
+  --type-steel: #B8B8D0;
+  --type-fairy: #F0B6BC;
+}  
+  
+  body{
+    background-image: url(./img/background2.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    font-family: sans-serif;
+  }
+  header {
     position: relative;
-    width: 350px;
-    aspect-ratio: 13/14;
-    background-color: #f2f2f2;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    perspective: 1000px;
-    box-shadow: 0 0 0 5px #ffffff80;
-    transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    left: 0%;
+    right: 0%;
   }
-  
-  .card img {
-    width: 200px;
-    fill: #333;
-    transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+  .banner {
+    display: block;
+    margin: auto;
+    width: 920px;
+
   }
-  
-  .card__img {
-    width: 100%;
-    height: 100%;
-  }
-  
-  .card:hover {
-    transform: scale(1.05);
-    box-shadow: 0 8px 16px rgba(255, 255, 255, 0.2);
-  }
-  
-  .card__content {
+
+
+  /* tarjeta */
+  h1 {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    padding: 20px;
-    box-sizing: border-box;
-    background-color: #f2f2f2;
-    transform: rotateX(-90deg);
-    transform-origin: bottom;
-    transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  }
-  
-  .card:hover .card__content {
-    transform: rotateX(0deg);
-  }
-  
-  .card__title {
-    margin: 0;
-    font-size: 20px;
-    color: #333;
-    font-weight: 700;
-  }
-  
-  .card:hover img {
-    scale: 0;
-  }
-  
-  .card__description {
-    margin: 10px 0 10px;
-    font-size: 12px;
-    color: #777;
-    line-height: 1.4;
-  }
-  
-  .card__button {
-    padding: 15px;
-    border-radius: 8px;
-    background: #777;
-    border: none;
+    margin-left: 69%;
+    margin-bottom: 99%;
+    font-size: 30px;
     color: white;
   }
-  
-  .secondary {
-    background: transparent;
-    color: #777;
-    border: 1px solid #777;
+
+
+
+  #tarjeta { 
+    margin: 0% 0% 0% 15%;
+    display: grid;
+    place-content: center;
+    padding-top: 3%;
+    grid-template-columns: repeat(3, 1fr);
   }
-            /* fin de tarjeta   */
+
+  .card {
+    margin: 10px;
+    width: 250px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 10px;
+    background-color: #fffffe;
+    border-radius: 15px;
+    position: relative;
+  }
+
+  .card::before {
+    content: "";
+    width: 250px;
+    height: 100px;
+    position: absolute;
+    top: 0;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    border-bottom: 3px solid #000000;
+    background: red;
+    transition: all 0.5s ease;
+  }
+
+  .card * {
+    z-index: 1;
+  }
+
+  .image {
+    width: 90px;
+    height: 90px;
+    background-color: #ffffff;
+    border-radius: 50%;
+    border: 3px solid #000000;
+    margin-top: 99px;
+    margin-bottom: 55px;
+    transition: all 0.5s ease;
+  }
+
+  .card-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    transition: all 0.5s ease;
+  }
+
+  .card-info span {
+    font-weight: 600;
+    font-size: 24px;
+    color: #161A42;
+    line-height: 5px;
+    text-transform: uppercase;
+  }
+
+  .card-info p {
+    color: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+  }
+
+  
+
+  .card:hover::before {
+    width: 250px;
+    height: 300px;
+    border-bottom: none;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    transform: scale(0.95);
+  }
+
+  .card:hover .card-info {
+    color: white;
+    transform: translate(0%, -25%);
+
+  }
+
+  .card:hover .card-info span {
+    color: #fffffe;
+  }
+
+  .card:hover .card-info p {
+    color: #fffffe;
+    opacity: 1;
+  }
+
+  .card:hover .image {
+    margin-bottom: 15px;
+    transform: scale(2) translate(-60%, -40%);
+  }
+
+  
+
+  .pokemon-stats {
+    display: flex;
+    gap: 1rem;
+    font-size: .85rem;
+}
+
+.stat {
+    background-color: rgb(13, 116, 252);
+    padding: .25rem .5rem;
+    border-radius: 100vmax;
+}
+
+  .pokemon-tipos {
+    display: flex;
+    gap: 1rem;
+    font-size: 1rem;
+    font-weight: 500;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.tipo {
+    margin-top: 25%;
+    padding: .25rem .5rem;
+    border-radius: 100vmax;
+}
+.normal {
+  background-color: var(--type-normal);
+  color: var(--clr-black);
+}
+
+.fire {
+  background-color: var(--type-fire);
+  color: var(--clr-black);
+}
+
+.water {
+  background-color: var(--type-water);
+  color: var(--clr-white);
+}
+
+.grass {
+  background-color: var(--type-grass);
+  color: var(--clr-black);
+}
+
+.electric {
+  background-color: var(--type-electric);
+  color: var(--clr-black);
+}
+
+.ice {
+  background-color: var(--type-ice);
+  color: var(--clr-black);
+}
+
+.fighting {
+  background-color: var(--type-fighting);
+  color: var(--clr-white);
+}
+
+.poison {
+  background-color: var(--type-poison);
+  color: var(--clr-white);
+}
+
+.ground {
+  background-color: var(--type-ground);
+  color: var(--clr-black);
+}
+
+.flying {
+  background-color: var(--type-flying);
+  color: var(--clr-black);
+}
+
+.psychic {
+  background-color: var(--type-psychic);
+  color: var(--clr-black);
+}
+
+.bug {
+  background-color: var(--type-bug);
+  color: var(--clr-black);
+}
+
+.rock {
+  background-color: var(--type-rock);
+  color: var(--clr-black);
+}
+
+.ghost {
+  background-color: var(--type-ghost);
+  color: var(--clr-white);
+}
+
+.dark {
+  background-color: var(--type-dark);
+  color: var(--clr-white);
+}
+
+.dragon {
+  background-color: var(--type-dragon);
+  color: var(--clr-white);
+}
+
+.steel {
+  background-color: var(--type-steel);
+  color: var(--clr-black);
+}
+
+.fairy {
+  background-color: var(--type-fairy);
+  color: var(--clr-black);
+}
+
+
+
+
+  @media (max-width:728px) {
+
+    body{
+      background-position: 70%;
+    }
+
+    #tarjeta {
+      display: grid;
+      margin-left: 15%;
+      padding-top: 5%;
+      justify-content: center;
+      grid-template-columns: repeat(1, 1fr);
+    }
+    h1 {
+      color: rgb(253, 249, 249);
+      position: absolute;
+      margin-left: -69%;
+      margin-bottom: 99%;
+      font-size: 30px;
+    }
+
+    .card:hover .image {
+      transform: scale(1.5) translate(8%,-50%);
+    }
+
+    .banner {
+      width: 100%;
+    }
+
+    .container{
+      max-height: 100%;
+      max-width: 100%;
+    }
+    /* .search-container{
+      width: 100%;
+      padding: 0px;
+    } */
+  }
+
+  /* fin de tarjeta   */
+
+
+
+  /* BUSCADOR   */
+  .container {
+    margin-top: 20px;
+    position: relative;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    background: linear-gradient(135deg, rgb(179, 208, 253) 0%, rgb(164, 202, 248) 100%);
+    border-radius: 1000px;
+    padding: 10px;
+    display: grid;
+    place-content: center;
+    z-index: 0;
+    max-height: 80px;
+    max-width: 300px;
+
+    
+  }
+  
+  .search-container {
+    position: relative;
+    width: 100%;
+    border-radius: 50px;
+    background: linear-gradient(135deg, rgb(218, 232, 247) 0%, rgb(214, 229, 247) 100%);
+    padding: 5px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .search-container::after, .search-container::before {
+    content: "";
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+    position: absolute;
+  }
+  
+  .search-container::before {
+    top: -1px;
+    left: -1px;
+    background: linear-gradient(0deg, rgb(218, 232, 247) 0%, rgb(255, 255, 255) 100%);
+    z-index: -1;
+  }
+  
+  .search-container::after {
+    bottom: -1px;
+    right: -1px;
+    background: linear-gradient(0deg, rgb(163, 206, 255) 0%, rgb(211, 232, 255) 100%);
+    box-shadow: rgba(79, 156, 232, 0.7019607843) 3px 3px 5px 0px, rgba(79, 156, 232, 0.7019607843) 5px 5px 20px 0px;
+    z-index: -2;
+  }
+  
+  .searchInput{
+    padding: 10px;
+    width: 100%;
+    background: linear-gradient(135deg, rgb(218, 232, 247) 0%, rgb(214, 229, 247) 100%);
+    border: none;
+    color: #9EBCD9;
+    font-size: 20px;
+    border-radius: 50px;
+  }
+  
+  .searchInput:focus {
+    outline: none;
+    background: linear-gradient(135deg, rgb(239, 247, 255) 0%, rgb(214, 229, 247) 100%);
+  }
+  
